@@ -14,9 +14,9 @@ def get_webui_setting(key, default):
 
 class FileManager:
     def __init__(self) -> None:
-        self.update_ia_outputs_dir()
+        self.update_outputs_dir()
 
-    def update_ia_outputs_dir(self) -> None:
+    def update_outputs_dir(self) -> None:
         """Update lama outputs directory.
 
         Returns:
@@ -47,7 +47,7 @@ class FileManager:
         Returns:
             str: lama outputs directory
         """
-        self.update_ia_outputs_dir()
+        self.update_outputs_dir()
         if not os.path.isdir(self._outputs_dir):
             os.makedirs(self._outputs_dir, exist_ok=True)
         return self._outputs_dir
