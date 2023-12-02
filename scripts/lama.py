@@ -8,7 +8,7 @@ from torchvision import transforms
 from modules import script_callbacks, devices, shared
 from lama_cleaner.model_manager import ModelManager
 from lama_cleaner.schema import Config, HDStrategy, LDMSampler, SDSampler
-from file_manager import file_manager
+from file_manager import file_manager as file_manager_lama
 
 
 def get_model_ids():
@@ -87,8 +87,8 @@ def run_lama(inputs, model_id):
     output_image = cv2.cvtColor(output_image.astype(np.uint8), cv2.COLOR_BGR2RGB)
     output_image = Image.fromarray(output_image)
 
-    save_name = "_".join([file_manager.savename_prefix, os.path.basename(model_id)]) + ".png"
-    save_name = os.path.join(file_manager.outputs_dir, save_name)
+    save_name = "_".join([file_manager_lama.savename_prefix, os.path.basename(model_id)]) + ".png"
+    save_name = os.path.join(file_manager_lama.outputs_dir, save_name)
     output_image.save(save_name)
     return [output_image]
 
